@@ -6,10 +6,13 @@
 package com.github.costabatista.webservicecorrente.service;
 
 import com.github.costabatista.webservicecorrente.Corrente;
+import com.google.gson.Gson;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,7 +28,7 @@ import javax.ws.rs.core.MediaType;
  * @author paulo
  */
 @Stateless
-@Path("com.github.costabatista.webservicecorrente.corrente")
+@Path("corrente")
 public class CorrenteFacadeREST extends AbstractFacade<Corrente> {
 
     @PersistenceContext(unitName = "com.github.costabatista_WebServiceCorrente_war_1.0-SNAPSHOTPU")
@@ -69,6 +72,25 @@ public class CorrenteFacadeREST extends AbstractFacade<Corrente> {
         return super.findAll();
     }
 
+    @GET
+    @Path("valor")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getCorrenteTotal() {
+        EntityManager em = getEntityManager();
+        List<Corrente> listaDeCorrente = new ArrayList<>();
+        try {
+            Query query = em.createNamedQuery("corrente.consultarPorNaoEnviadaAoWebservice");
+            query.setParameter("enviadoparawebservice", false);
+            listaDeCorrente = query.getResultList();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            listaDeCorrente = new ArrayList<>();
+        } 
+        
+        Gson gson = new Gson();
+        
+        return gson.toJson(listaDeCorrente.get(0));
+    }
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

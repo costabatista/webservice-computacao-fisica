@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Corrente.findAll", query = "SELECT c FROM Corrente c")
+    , @NamedQuery(name = "corrente.consultarPorNaoEnviadaAoWebservice", query = "SELECT c FROM Corrente c WHERE c.webservice = :enviadoparawebservice")    
     , @NamedQuery(name = "Corrente.findById", query = "SELECT c FROM Corrente c WHERE c.id = :id")
     , @NamedQuery(name = "Corrente.findByValor", query = "SELECT c FROM Corrente c WHERE c.valor = :valor")
     , @NamedQuery(name = "Corrente.findByWebservice", query = "SELECT c FROM Corrente c WHERE c.webservice = :webservice")})
