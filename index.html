@@ -142,7 +142,39 @@ body, html {
           sistema computacional. Por enquanto, a sketch se encontra nesse repositório dentro desta <a href="https://github.com/costabatista/computacao-fisica-projetos/tree/master/medidor-de-consumo-de-energia-domestica" target="_blank">pasta</a>.
           Depois de colocar o sketch no arduino, podemos ir para a próxima etapa.
         </p>
-        <p># Ligação entre sistema de sensoriamento de corrente elétrica e sistema computacional</p>
+        <p><b># Ligação entre sistema de sensoriamento de corrente elétrica e sistema computacional</b></p>
+        <p>
+        Agora, realizaremos a ligação entre a parte do sistema que capta a corrente consumida e o sistema
+        computacional. Este tem por finalidade armazenar a quantidade de corrente consumida (em tempo real)
+        em uma tabela de banco de dados. Esse dado será consumido por um WebService.</p>
+        <p>
+          Enfim, antes de tudo você precisa realizar a conexão entre os dados que são enviados para a porta serial
+          do arduino para o computador (USB). Para isso, será necessário instalar e configurar corretamente o <b>RXTX</b> em sua máquina.
+          Considerando que o projeto foi inteiramente desenvolvido no Ubuntu, disponibilizo aqui um excelente tutorial para a realização desta 
+          etapa. Segue o link <a href="https://docs.google.com/document/d/e/2PACX-1vQSTA9ZHnrKgeJIDlze04O_JAbpYKKXLcbh5tQu3UCxhoALRafSE8F3VKDWZuFU6UO_Qv5mNnOC7ncX/pub" target="_blank">aqui</a>.
+        </p>
+        <p>
+          Em seguida, você poderá estabelecer a comunicação entre o arduino e o computador. Para fazer a gravação da corrente consumida numa tabela de um banco de dados, 
+          criei o projeto encontrado naquele repositório o qual citei préviamente. O projeto foi desenvolvido no Netbeans, aconselho o uso dessa IDE. Então, ele se encontra nessa <a href="https://github.com/costabatista/computacao-fisica-projetos/tree/master/LeitorDeCorrente" target="_blank">pasta</a>
+          Esse projeto tem apenas duas finalidades:
+          <ul>
+            <li>Conexão e obtenção da corrente elétrica consumida</li>
+            <li>Armazenamento dos dados em Banco de dados</li>
+          </ul>
+          <b>Observação: O SGBD utilizado foi o MySQL, por meio de anotações JPA.</b>
+        </p>
+        <p><b># Criação de WebService para consumo dos dados</b></p>
+        <p>Como o objetivo desse sistema é a utilização dos dados de corrente para um aplitivo móvel, é necessário
+          que se tenha um WebService responsável por consumir os dados de corrente que são armazenados. Eu criei um
+          WebService Restfull com glassfish com o Netbeans. Da mesma forma, aqui utilizei a combinação <b>JPA + Glassfish + EclipseLink</b>.
+          Para fins de apresentação, deixo disponível o projeto desenvolvido para essa finalidade <a href="https://github.com/costabatista/webservice-computacao-fisica" target="_blank">aqui</a> 
+        </p>
+        <p><b># Criação de Aplicativo Android para controle de energia</b></p>
+        <p>
+          Depois de todo o processo de comunicação realizado, chegou a parte principal mais interessante do projeto. A criação do aplicativo.
+          Tomei a decisão de criar com o framework React-Native. Esse aplicativo obtém os dados da corrente elétrica por meio
+          do webservice. Assim, com ele é possível elaborar os cálculos de energia elétrica consumida. O projeto Android React Native que foi criado se encontra <a href="https://github.com/costabatista/energia-controle" target="_blank">aqui</a>.
+        </p>
       </div>
       
     </div>
