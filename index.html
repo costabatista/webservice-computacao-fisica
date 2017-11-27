@@ -83,7 +83,7 @@ body, html {
       detrimento daquilo que temos de pagar.</i></p>
       
     </div>
-    <img src="https://raw.githubusercontent.com/costabatista/webservice-computacao-fisica/gh-pages/images/fatura.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <img src="https://raw.githubusercontent.com/costabatista/webservice-computacao-fisica/gh-pages/images/fatura.jpg" style="width:100%;max-width:1000px" class="w3-margin-top w3-margin-bottom w3-margin-right w3-margin-left">
   </div>
 </div>
 
@@ -107,15 +107,46 @@ body, html {
             <li>1 Capacitor de 100 mF </li>
             <li>1 Arduino Uno</li>
             <li>1 Cabo USB</li>
+            <li>1 Protoboard</li>
             <li>1 Medidor de corrente não invasivo SCT-013</li>
           </ol>
+
+          <img src="https://raw.githubusercontent.com/costabatista/webservice-computacao-fisica/gh-pages/images/Circuito_Arduino_Sensor_Corrente_SCT013.png" style="width:100%;max-width:1000px" class="w3-margin-top w3-animate-bottom w3-margin-left w3-animate-right">
+          <p><b># Passo a passo: Montagem de hardware</b></p>
+          <p>
+          Montar o hardware nesse caso é um processo simples. A imagem logo acima, mostra como o projeto se configurava
+          anteriormente (na primeira versão deste projeto). Considerando o exposto, desconsideraremos as ligações das fiações
+          que são referentes ao display de LCD, uma vez que ele foi removido.Desse modo, faremos as demais ligações. 
+        </p>
+        <p>
+          <ol>
+            <li>Primeiro, ligue em os resistores e os capacitores na Protoboard.</li>
+            <li> Em seguida, faça as ligações de positivo e negativo. Para isso, conecte os lados positivo e negativo nas
+                respectivas trilhas da Protoboard. </li>
+            <li> A trilha positiva da Protoboard receberá uma ligação de <b>5V</b> que 
+              parte do <b>Arduino</b>.</li>
+            <li>Por sua vez, a trilha negativa da Protoboard será conectada ao <b>GND</b> do 
+              <b>Arduino</b>.</li>
+            <li>
+              A partir disso, será realizada a ligação do <b>sensor não invasivo de corrente SCT-013</b> 
+              com o arduino e a Protoboard. Para isso, conecte o fio vermelho na ligação de energia (positiva) que parte dos resistores (conforme)
+              a figura. Em seguida, conecte o fio preto do sensor com a porta analógica A1.
+          
+            </li>
+          </ol>
+        </p>
+        <p>
+          A partir disso, a parte de hardware está tecnicamente pronta. È necessário colocar a sketch do arduino. Para isso,
+          deixo disponível o projeto utilizado para sensoriar a corrente. Ele está em <a href="https://github.com/costabatista/computacao-fisica-projetos" target="_blank">github</a>.
+          Esse é o mesmo repositório que contém o projeto necessário para realizar a próxima etapa que é a ligação entre sistema de captação de corrente e 
+          sistema computacional. Por enquanto, a sketch se encontra nesse repositório dentro desta <a href="https://github.com/costabatista/computacao-fisica-projetos/tree/master/medidor-de-consumo-de-energia-domestica" target="_blank">pasta</a>.
+          Depois de colocar o sketch no arduino, podemos ir para a próxima etapa.
+        </p>
+        <p># Ligação entre sistema de sensoriamento de corrente elétrica e sistema computacional</p>
       </div>
       
     </div>
   </div>
- 
-
-    </p>
   </div>
 </div>
 
